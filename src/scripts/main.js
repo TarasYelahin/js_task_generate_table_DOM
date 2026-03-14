@@ -355,12 +355,20 @@ const people = [
 ];
 
 // eslint-disable-next-line no-console
-const dashboard = document.querySelector('.dashboard');
 
-if (!dashboard) {
-  throw new Error('dashboarnd is not found');
-} else {
-  const tbody = dashboard.querySelector('tbody') || dashboard;
+document.addEventListener('DOMContentLoaded', () => {
+  const dashboard = document.querySelector('.dashboard');
+
+  if (!dashboard) {
+    throw new Error('dashboard is not found');
+  }
+
+  let tbody = dashboard.querySelector('tbody');
+
+  if (!tbody) {
+    tbody = document.createElement('tbody');
+    dashboard.appendChild(tbody);
+  }
 
   people.forEach((person) => {
     const tr = document.createElement('tr');
@@ -378,9 +386,9 @@ if (!dashboard) {
     values.forEach((v) => {
       const td = document.createElement('td');
 
-      td.textContent(String(v));
+      td.textContent = String(v);
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
   });
-}
+});
