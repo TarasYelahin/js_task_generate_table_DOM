@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const century = Math.ceil(person.died / 100);
     const values = [
       person.name,
-      person.gender,
+      person.sex,
       person.born,
       person.died,
       age,
